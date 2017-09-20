@@ -6,7 +6,7 @@ var config = {
       "destinationDir":"demo"
     },
       "js":{
-          "sourceDir": "src",
+          "sourceDir": "lib",
           "sourceFiles": ["demo"],
           "destinationDir":"demo"
       },

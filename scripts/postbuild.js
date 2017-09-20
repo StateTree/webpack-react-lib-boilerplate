@@ -36,16 +36,16 @@ function copy(config,command){
     if(config["html"]){
         copyType(config["html"],"html",command)
     }
-    else if(config["js"]){
+    if(config["js"]){
         copyType(config["js"],"js",command)
     }
-    else if(config["css"]){
+    if(config["css"]){
         copyType(config["css"],"css",command)
     }
-    else if(config["json"]){
+    if(config["json"]){
         copyType(config["json"],"json",command)
     }
-    else if(config["other"]){
+    if(config["other"]){
         copyType(config["other"],"other",command)
     }
 }
