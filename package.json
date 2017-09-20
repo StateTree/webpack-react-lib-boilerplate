@@ -1,6 +1,6 @@
 {
   "name": "boilerplate",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Boilerplate for React JS App",
   "scripts": {
     "postinstall": "node scripts/postinstall.js ",
@@ -9,7 +9,11 @@
     "prebuild": "rimraf lib && rimraf demo",
     "build": "./node_modules/.bin/webpack --progress --config webpack.config.js --env prod",
     "postbuild": "node scripts/postbuild.js",
-    "publish": "git subtree push --prefix demo origin gh-pages"
+    "publish": "git subtree push --prefix demo origin gh-pages",
+    "release:bugfix": "npm version patch -m 'Bumped patch version number'",
+    "release:feature": "npm version minor -m 'Bumped minor version number'",
+    "release:breakingchange": "npm version major -m 'Bumped major version number'",
+    "postversion": "git push origin HEAD --follow-tags"
   },
   "author": "Sanjay Krishna Anbalagan",
   "license": "MIT",
