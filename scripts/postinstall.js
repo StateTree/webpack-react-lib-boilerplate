@@ -24,21 +24,19 @@ var newJson = {
 
 command.createDir( "../../src",function(){
     command.createDir( "../../test",function(){
-        command.createDir( "../../demo",function(){
-            command.copyDir( "./scripts", "../../scripts",function(){
-                command.copyDir( "./src", "../../src",function(){
-                    command.copyFile( "./webpack.config.js", "../../webpack.config.js",function(){
-                        command.copyFile( "./.babelrc", "../../.babelrc",function(){
-                            command.copyFile( "./.eslintrc.json", "../../.eslintrc.json",function(){
-                                command.updateJson( "../../package.json", newJson,function(){
-                                    command.remove("../../scripts/postinstall.js",function(){
-                                        command.remove("../../scripts/utils.js",function(){
-                                            command.remove("../../node_modules/boilerplate")
-                                        })
+        command.copyDir( "./scripts", "../../scripts",function(){
+            command.copyDir( "./src", "../../src",function(){
+                command.copyFile( "./webpack.config.js", "../../webpack.config.js",function(){
+                    command.copyFile( "./.babelrc", "../../.babelrc",function(){
+                        command.copyFile( "./.eslintrc.json", "../../.eslintrc.json",function(){
+                            command.updateJson( "../../package.json", newJson,function(){
+                                command.remove("../../scripts/postinstall.js",function(){
+                                    command.remove("../../scripts/utils.js",function(){
+                                        command.remove("../../node_modules/boilerplate")
                                     })
-                                });
-                            })
-                        });
+                                })
+                            });
+                        })
                     });
                 });
             });

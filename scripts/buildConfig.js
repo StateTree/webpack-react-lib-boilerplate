@@ -6,9 +6,9 @@ var config = {
       "destinationDir":"demo"
     },
       "js":{
-          "sourceDir": "lib",
-          "sourceFiles": ["demo"],
-          "destinationDir":"demo"
+          "sourceDir": null,
+          "sourceFiles": null,
+          "destinationDir":null
       },
     "css":{
       "sourceDir":null,

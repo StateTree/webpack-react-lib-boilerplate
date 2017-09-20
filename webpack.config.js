@@ -6,12 +6,13 @@ const libraryName = 'Library';
 const paths = {
     context: path.join(__dirname, "./src/"),
     output: path.join(__dirname, "./lib/"),
-	entry: {
-    	demo: "./demo.js"
-	}
+    entry: {
+        'demo/demo': "./demo.js"
+    }
 };
 
-paths.entry[libraryName] = "./index.js";
+const libPath = "lib/" + libraryName;
+paths.entry[libPath] = "./index.js";
 
 
 const config = {
