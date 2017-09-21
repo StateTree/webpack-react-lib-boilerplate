@@ -5,14 +5,15 @@ const env  = require("yargs").argv.env; // use --env with webpack 2
 const libraryName = 'Library';
 const paths = {
     context: path.join(__dirname, "./src/"),
-    output: path.join(__dirname, "./lib/"),
+    output: path.join(__dirname, "./"),
+    lib: path.join(__dirname, "./lib"),
     entry: {
-        'demo/demo': "./demo.js"
+        'demo/demo': ".demo/index.js"
     }
 };
 
 const libPath = "lib/" + libraryName;
-paths.entry[libPath] = "./index.js";
+paths.entry[libPath] = "./library/index.js";
 
 
 const config = {
@@ -29,7 +30,7 @@ const config = {
 		rules: [
             {
                 test: /\.css$/,
-                loader: 'css-loader'
+                loader: ['style-loader','css-loader']
             },
 			{
 				test: /\.(jsx|js)$/,
@@ -41,7 +42,7 @@ const config = {
 	},
 	resolve: { // In resolve we tell Webpack where to look for modules. as of Webpack ^2.0 important to give node modules folder too
 		extensions: [".js", ".jsx"],
-		modules: [paths.context,"node_modules"],
+		modules: [paths.context, paths.lib, "node_modules"],
 	},
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
