@@ -1,7 +1,7 @@
 var config = {
   "copy":{
     "html":{
-      "sourceDir": "src",
+      "sourceDir": "src/demo",
       "sourceFiles": ["index"],
       "destinationDir":"demo"
     },
