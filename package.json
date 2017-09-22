@@ -1,6 +1,6 @@
 {
   "name": "boilerplate",
-  "version": "1.2.0",
+  "version": "1.5.0",
   "description": "Boilerplate for React JS App",
   "scripts": {
     "postinstall": "node scripts/postinstall.js ",
@@ -10,10 +10,12 @@
     "build": "./node_modules/.bin/webpack --progress --config webpack.config.js --env prod",
     "postbuild": "node scripts/postbuild.js",
     "publish": "git subtree push --prefix demo origin gh-pages",
+    "release:master": "git checkout master && git merge --squash develop && git commit -am 'Release Commit'",
     "release:bugfix": "npm version patch -m 'Bumped patch version number'",
     "release:feature": "npm version minor -m 'Bumped minor version number'",
     "release:breakingchange": "npm version major -m 'Bumped major version number'",
-    "postversion": "git push origin HEAD --follow-tags"
+    "postversion": "git push origin HEAD --follow-tags",
+    "deploy": "npm run build && git commit -am 'Deploy Commit' && git push && git subtree push --prefix demo origin gh-pages"
   },
   "author": "Sanjay Krishna Anbalagan",
   "license": "MIT",
@@ -28,10 +30,12 @@
     "eslint": "^4.6.1",
     "eslint-loader": "^1.9.0",
     "fs-extra": "^4.0.2",
-    "rimraf": "^2.6.2",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   }
 }

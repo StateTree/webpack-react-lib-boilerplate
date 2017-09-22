@@ -11,7 +11,7 @@ var utils = require("./utils");
 var scripts = utils.removePropertiesFromObj(packageJson.scripts,["postinstall"]);
 
 
-var dependencies = utils.extractPropertiesFromObj(packageJson.dependencies,["react", "react-dom"]);
+var dependencies = utils.extractPropertiesFromObj(packageJson.dependencies,["react", "react-dom","prop-types"]);
 
 var newJson = {
     "devDependencies": packageJson.dependencies,
