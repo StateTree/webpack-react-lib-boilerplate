@@ -1,6 +1,4 @@
-const webpack = require("webpack");
 const path = require("path");
-const env  = require("yargs").argv.env; // use --env with webpack 2
 
 const libraryName = 'Library';
 const paths = {
@@ -30,12 +28,16 @@ const config = {
         rules: [
             {
                 test: /\.css$/,
-                loader: ['style-loader','css-loader']
+	            use: {
+		            loader: ['style-loader','css-loader']
+	            }
             },
             {
                 test: /\.(jsx|js)$/,
-                loader: "babel-loader",
-                exclude: /node_modules/
+                exclude: /node_modules/,
+	            use: {
+		            loader: "babel-loader"
+	            }
             }
         ]
 
@@ -44,57 +46,9 @@ const config = {
         extensions: [".js", ".jsx"],
         modules: [paths.context, paths.lib, "node_modules"],
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            children: true,
-            async: true
-        }),
-        new webpack.optimize.MinChunkSizePlugin({
-            minChunkSize: 2500
-        })
-    ]
+	devServer: {
+		port: 3001
+	}
 };
-
-if (env === 'prod'){
-    config.devtool =  "hidden-source-map";
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-            drop_console: true,
-            drop_debugger: true,
-            screw_ie8: true
-        },
-        output: {
-            comments: false
-        },
-        sourceMap: false,
-        beautify: false,
-        mangle: {
-            screw_ie8: true,
-            keep_fnames: true
-        },
-        comments: false
-    }));
-    config.plugins.push(new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
-    }));
-} else {
-    config.devtool =  "#inline-source-map";
-    config.devServer = {
-        contentBase: paths.context,
-        publicPath: '/',
-        historyApiFallback: {
-            index: '/'
-        },
-        inline: true,
-        port: 8080,
-        stats: {
-            chunks: false,
-            children: false
-        },
-        clientLogLevel: 'info'
-    }
-}
 
 module.exports = config;
